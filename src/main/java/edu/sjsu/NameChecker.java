@@ -16,11 +16,10 @@ public class NameChecker {
         if (input.length() < 2 || input.length() > 40) {
             return false;
         }
-        if (!input.matches("^[a-zA-Z]+$")) {
-            return false; // not alphanumeric
+        if (!input.matches("^[a-zA-Z]+(?:[-'][a-zA-Z]+)*$")) {
+            return false;
         }
-        // Check non-consecutive hyphens and single quotes
-        if (input.matches(".*(--|'').*")) {
+        if (input.contains("--")) {
             return false;
         }
         if (input.charAt(0) == '-' || input.charAt(0) == '\'') {
